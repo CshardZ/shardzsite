@@ -1,0 +1,90 @@
+body {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode',sans-serif;
+    font-size: 1.2rem;
+    background-color: cadetblue;
+}
+
+header {
+    background-color: crimson;
+    width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    }
+    
+form {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+.container {
+    background-color: burlywood;
+    width: 400px;
+    margin: 5% auto;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 6px black;
+}
+
+#timer-widget {
+    display: flex;
+    justify-content: center;
+    gap: 2px;
+    background-color: grey;
+    padding: 8px;
+    width: fit-content;
+    height: 25px;
+    margin: 0 auto;
+    border-radius: 8px;
+    position: fixed;
+    left: 70%;
+    top: 20%;
+}
+
+#timer-widget p {
+    margin: 0;
+}
+
+input {
+    width: 80%;
+    padding: 6px;
+    border: 2px solid black;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    background-color: white;
+}
+
+input[type=submit] {
+    width: 130px;
+    font: inherit;
+    background-color: ghostwhite;
+}
+
+input:hover {
+    box-shadow: 0 0 4px blue;
+}
+
+
+input:disabled {
+    background-color: #c9c9c9;
+}
+
+#otptimer {
+    background-color: white;
+    padding: 2px 4px;
+    border-radius: 5px;
+}
+
+#resend {
+    display: inline;
+    position: fixed;
+    left: 70%;
+    top: 30%;
+}
+
+#timer-pause {
+    position: absolute;
+    left: -5000px;
+}

@@ -1,0 +1,74 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'style.css') }}" >
+    <script type = "text/javascript" src = "{{ url_for('static', filename = 'script.js') }}" ></script>
+</head> 
+
+<body>
+    <header>
+        <h1>Login Page</h1>
+        {% if OTPInvalid %}
+        <p id="timer-resume" hidden>{{ resuming_time }}</p>
+        <script type="text/javascript">
+            window.onload = function() {
+                timer(document.getElementById('timer-resume').innerText);
+            }
+        </script>
+        {% else %}
+        <script type="text/javascript">
+            window.onload = function() {
+                timer(60);
+            }
+        </script>
+        {% endif %}
+    </header>
+
+    <main>
+        <div class="container">
+
+            {% if otp_sent %}
+                <form action="" method="POST">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" value="{{ email }}" disabled>
+                    <br>
+                    <label for="otp">OTP:</label>
+                    
+                    {% if not OTPInvalid %}
+                        <input type="text" id="otp" name="otp">
+                    {% else %}
+                        <input type="text" id="otp" name="otp" placeholder="Invalid OTP! Try Again">
+                    {% endif %}
+                    
+                    <br>
+                    <input type="submit" value="Submit" id="submit">
+                    <br>
+                    <input type="text" name="timer-pause" id="timer-pause">
+                    
+                    <div id="resend">
+                        <input type="submit" value="Resend OTP" name="GETOTP" id="getotp" disabled>
+                    </div>
+                </form>
+
+                <div id="timer-widget">
+                    <p>OTP will expire in</p>
+                    <p id="otptimer">00:&nbsp;&nbsp;&nbsp;</p>
+                </div>                
+            {% endif %}
+
+            {% if not otp_sent %}
+                <form action="" method="POST">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" value="{{ email }}">
+                    <br>
+                    <input type="submit" value="Get OTP" id="getotp">
+                    <input type="text" name="GETOTP" hidden>
+                </form>
+            {% endif %}
+            
+        </div>
+    </main>
+</body>
+</html>
